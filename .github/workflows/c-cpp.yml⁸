@@ -1,18 +1,28 @@
-build:
 
-    runs-on: ubuntu-22.04
-    
-    strategy:
+name: C/C++ CI
 
-      fail-fast: false
-     steps:
-     - uses: actions/checkout@v3
-    - name: apt install xorg-server xproto fontsproto
-    - run: apt update
-           apt install xorg-server xproto fontsproto
+on:
+
+  push:
+
+    branches: [ "master" ]
+
+  pull_request:
+
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    steps:
+
+    - uses: actions/checkout@v3
+
     - name: make configure-drivers
-      run: make configure-drivers
-    - name: make build-drivers
-      run: make build-drivers
 
-      
+      run: make configure-drivers
+
+    - name: make build-drivers
+
+      run: make build-drivers
