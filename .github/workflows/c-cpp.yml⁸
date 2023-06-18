@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: apt install xorg-server xproto fontsproto
+    - run: sudo apt update
+    .      sudo apt install xorg-server xproto fontsproto
     - name: make configure-drivers
       run: make configure-drivers
     - name: make build-drivers
